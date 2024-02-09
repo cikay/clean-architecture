@@ -3,7 +3,8 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 
 from routers import discipline
-from models.discipline import DisciplineDB, db
+from models.base import db
+from models.discipline import DisciplineDB
 
 
 @asynccontextmanager
