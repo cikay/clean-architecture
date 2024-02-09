@@ -6,9 +6,9 @@ from models.base import BaseModel
 db = PostgresqlDatabase("reber", user="reber", password="reber", host="db")
 
 
-class SubjectDB(BaseModel):
+class DisciplineDB(BaseModel):
     name = CharField(unique=True)
 
     class Meta:
         database = db
-        table_name = "subjects"
+        table_name = "disciplines"
