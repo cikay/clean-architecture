@@ -2,27 +2,18 @@ from dataclasses import asdict
 
 from entities.discipline import Discipline, DisciplineQuery
 from models.discipline import DisciplineDB
+from repositories.base import BaseRepository
 
 
-class DisciplineRepository:
+class DisciplineRepository(BaseRepository[DisciplineDB, Discipline]):
     def get(self, discipline_id: int) -> Discipline:
         discipline_db = DisciplineDB.get(DisciplineDB.id == discipline_id)
-        return Discipline(
-            id=discipline_db.id,
-            name=discipline_db.name,
-            created_at=discipline_db.created_at,
-            updated_at=discipline_db.updated_at,
-        )
+        return self.to_entity(discipline_db)
 
     def create(self, discipline: Discipline) -> Discipline:
         discipline_dict = asdict(discipline)
         discipline_db = DisciplineDB.create(**discipline_dict)
-        return Discipline(
-            id=discipline_db.id,
-            name=discipline_db.name,
-            created_at=discipline_db.created_at,
-            updated_at=discipline_db.updated_at,
-        )
+        return self.to_entity(discipline_db)
 
     def get_many(self, query: DisciplineQuery) -> list[Discipline]:
         disciplines = DisciplineDB.select()
