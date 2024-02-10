@@ -1,3 +1,5 @@
+from dataclasses import asdict
+
 from entities.discipline import Discipline, DisciplineQuery
 from models.discipline import DisciplineDB
 
@@ -13,7 +15,8 @@ class DisciplineRepository:
         )
 
     def create(self, discipline: Discipline) -> Discipline:
-        discipline_db = DisciplineDB.create(name=discipline.name)
+        discipline_dict = asdict(discipline)
+        discipline_db = DisciplineDB.create(**discipline_dict)
         return Discipline(
             id=discipline_db.id,
             name=discipline_db.name,
