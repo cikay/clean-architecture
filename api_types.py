@@ -1,6 +1,7 @@
 from typing import get_type_hints
 
 from pydantic import create_model
+from entities.author import AuthorCreate
 
 from entities.discipline import DisciplineCreate
 
@@ -16,3 +17,4 @@ def create_api_type(entity_type, type_name):
 
 
 DisciplineCreateAPI = create_api_type(DisciplineCreate, "DisciplineCreateAPI")
+AuthorCreateAPI = create_api_type(AuthorCreate, "AuthorCreateAPI")
