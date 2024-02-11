@@ -4,7 +4,7 @@ from factories.discipline import (
     CreateDisciplineControllerFactory,
     GetDisciplineControllerFactory,
 )
-
+from api_types import DisciplineCreateAPI
 
 router = APIRouter(prefix="/disciplines")
 
@@ -18,8 +18,8 @@ def get(discipline_id: int, response: Response):
 
 
 @router.post("/")
-def create(discipline: dict, response: Response):
+def create(discipline: DisciplineCreateAPI, response: Response):
     discipline_controller = CreateDisciplineControllerFactory.create()
-    body, status = discipline_controller.create(discipline)
+    body, status = discipline_controller.create(discipline.dict())
     response.status_code = status
     return body
