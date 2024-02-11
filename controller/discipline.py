@@ -7,7 +7,12 @@ class GetDisciplineController:
         self.use_case = use_case
 
     def get(self, discipline_id) -> tuple[dict, int]:
-        return self.use_case.execute(discipline_id), 200
+        discipline = self.use_case.execute(discipline_id)
+
+        if not discipline:
+            return {"detail": "discipline not found"}, 404
+
+        return discipline, 200
 
 
 class CreateDisciplineController:

@@ -6,8 +6,11 @@ from repositories.base import BaseRepository
 
 
 class DisciplineRepository(BaseRepository[DisciplineDB, Discipline]):
-    def get(self, discipline_id: int) -> Discipline:
-        discipline_db = DisciplineDB.get(DisciplineDB.id == discipline_id)
+    def get(self, discipline_id: int) -> Discipline | None:
+        discipline_db = DisciplineDB.get_or_none(DisciplineDB.id == discipline_id)
+        if not discipline_db:
+            return None
+
         return self.to_entity(discipline_db)
 
     def create(self, discipline: Discipline) -> Discipline:

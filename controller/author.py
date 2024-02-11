@@ -7,7 +7,11 @@ class GetAuthorController:
         self.use_case = use_case
 
     def get(self, author_id) -> tuple[dict, int]:
-        return self.use_case.execute(author_id), 200
+        author = self.use_case.execute(author_id)
+        if not author:
+            return {"detail": "author not found"}, 404
+
+        return author, 200
 
 
 class CreateAuthorController:
