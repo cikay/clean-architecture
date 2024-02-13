@@ -13,7 +13,3 @@ class AuthorBaseDB(BaseModel):
 
 class AuthorDB(AuthorBaseDB):
     pass
-
-
-class TranslatorDB(AuthorBaseDB):
-    pass
