@@ -13,6 +13,9 @@ peewee = "3.17.0"
 psycopg2 = "^2.9.9"
 
 
+[tool.poetry.group.dev.dependencies]
+ipdb = "0.13.13"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
