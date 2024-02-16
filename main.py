@@ -11,7 +11,7 @@ from routers import translator
 
 @asynccontextmanager
 async def setup(app: FastAPI):
-    setup_db()
+    await setup_db()
     yield
 
 

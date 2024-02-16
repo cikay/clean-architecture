@@ -6,16 +6,16 @@ from repositories.base import BaseRepository
 
 
 class DisciplineRepository(BaseRepository[DisciplineDB, Discipline]):
-    def get(self, discipline_id: int) -> Discipline | None:
-        discipline_db = DisciplineDB.get_or_none(DisciplineDB.id == discipline_id)
+    async def get(self, discipline_id: int) -> Discipline | None:
+        discipline_db = await DisciplineDB.filter(id=discipline_id).first()
         if not discipline_db:
             return None
 
         return self.to_entity(discipline_db)
 
-    def create(self, discipline: Discipline) -> Discipline:
+    async def create(self, discipline: Discipline) -> Discipline:
         discipline_dict = asdict(discipline)
-        discipline_db = DisciplineDB.create(**discipline_dict)
+        discipline_db = await DisciplineDB.create(**discipline_dict)
         return self.to_entity(discipline_db)
 
     def get_many(self, query: DisciplineQuery) -> list[Discipline]:

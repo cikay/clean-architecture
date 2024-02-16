@@ -1,13 +1,10 @@
 from datetime import datetime
 
-from peewee import Model, DateTimeField, PostgresqlDatabase
+from tortoise.fields import DatetimeField
+from tortoise.models import Model
 
-db = PostgresqlDatabase("reber", user="reber", password="reber", host="db")
 
 
 class BaseModel(Model):
-    created_at = DateTimeField(default=datetime.now)
-    updated_at = DateTimeField(default=datetime.now)
-
-    class Meta:
-        database = db
+    created_at = DatetimeField(default=datetime.now)
+    updated_at = DatetimeField(default=datetime.now)

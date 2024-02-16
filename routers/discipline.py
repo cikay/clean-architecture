@@ -10,16 +10,16 @@ router = APIRouter(prefix="/disciplines")
 
 
 @router.get("/{discipline_id}")
-def get(discipline_id: int, response: Response):
+async def get(discipline_id: int, response: Response):
     discipline_controller = GetDisciplineControllerFactory.create()
-    body, status = discipline_controller.get(discipline_id)
+    body, status = await discipline_controller.get(discipline_id)
     response.status_code = status
     return body
 
 
 @router.post("/")
-def create(discipline: DisciplineCreateAPI, response: Response):
+async def create(discipline: DisciplineCreateAPI, response: Response):
     discipline_controller = CreateDisciplineControllerFactory.create()
-    body, status = discipline_controller.create(discipline.dict())
+    body, status = await discipline_controller.create(discipline.dict())
     response.status_code = status
     return body

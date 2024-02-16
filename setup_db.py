@@ -1,9 +1,10 @@
-from models.base import db
-from models.author import AuthorDB
-from models.book import BookDB
-from models.translator import TranslatorDB
-from models.discipline import DisciplineDB
+from tortoise import Tortoise
 
-def setup_db():
-    db.connect()
-    db.create_tables([DisciplineDB, AuthorDB, BookDB, TranslatorDB])
+
+async def setup_db():
+    await Tortoise.init(
+        db_url="postgres://reber:reber@db:5432/reber",
+        modules={"models": ["models.__init__"]},
+    )
+
+    await Tortoise.generate_schemas()

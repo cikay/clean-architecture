@@ -7,13 +7,13 @@ class CreateDisciplineUseCase(BaseUseCase):
     def __init__(self, repo: DisciplineRepository):
         self.repo = repo
 
-    def execute(self, discipline: DisciplineCreate):
-        return self.repo.create(discipline)
+    async def execute(self, discipline: DisciplineCreate):
+        return await self.repo.create(discipline)
 
 
 class GetDisciplineUseCase(BaseUseCase):
     def __init__(self, repo: DisciplineRepository):
         self.repo = repo
 
-    def execute(self, discipline_id: int):
-        return self.repo.get(discipline_id)
+    async def execute(self, discipline_id: int):
+        return await self.repo.get(discipline_id)
