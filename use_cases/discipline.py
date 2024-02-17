@@ -17,3 +17,11 @@ class GetDisciplineUseCase(BaseUseCase):
 
     async def execute(self, discipline_id: int):
         return await self.repo.get(discipline_id)
+
+
+class GetManyDisciplineUseCase(BaseUseCase):
+    def __init__(self, repo: DisciplineRepository):
+        self.repo = repo
+
+    async def execute(self):
+        return await self.repo.get_many()

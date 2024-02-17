@@ -1,6 +1,6 @@
-from controller.discipline import CreateDisciplineController, GetDisciplineController
+from controller.discipline import CreateDisciplineController, GetDisciplineController, GetManyDisciplineController
 from repositories.discipline import DisciplineRepository
-from use_cases.discipline import CreateDisciplineUseCase, GetDisciplineUseCase
+from use_cases.discipline import CreateDisciplineUseCase, GetDisciplineUseCase, GetManyDisciplineUseCase
 
 
 class GetDisciplineControllerFactory:
@@ -9,6 +9,14 @@ class GetDisciplineControllerFactory:
         repo = DisciplineRepository()
         use_case = GetDisciplineUseCase(repo)
         return GetDisciplineController(use_case)
+
+
+class GetManyDisciplineControllerFactory:
+    @staticmethod
+    def create() -> GetManyDisciplineController:
+        repo = DisciplineRepository()
+        use_case = GetManyDisciplineUseCase(repo)
+        return GetManyDisciplineController(use_case)
 
 
 class CreateDisciplineControllerFactory:

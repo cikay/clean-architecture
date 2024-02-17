@@ -1,4 +1,8 @@
-from use_cases.discipline import CreateDisciplineUseCase, GetDisciplineUseCase
+from use_cases.discipline import (
+    CreateDisciplineUseCase,
+    GetDisciplineUseCase,
+    GetManyDisciplineUseCase,
+)
 from entities.discipline import DisciplineCreate
 
 
@@ -13,6 +17,15 @@ class GetDisciplineController:
             return {"detail": "discipline not found"}, 404
 
         return discipline, 200
+
+
+class GetManyDisciplineController:
+    def __init__(self, use_case: GetManyDisciplineUseCase):
+        self.use_case = use_case
+
+    async def get_many(self) -> tuple[dict, int]:
+        disciplines = await self.use_case.execute()
+        return disciplines, 200
 
 
 class CreateDisciplineController:
