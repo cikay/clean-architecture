@@ -6,13 +6,6 @@ from repositories.base import BaseRepository
 
 
 class DisciplineRepository(BaseRepository[DisciplineDB, Discipline]):
-    async def get(self, discipline_id: int) -> Discipline | None:
-        discipline_db = await DisciplineDB.filter(id=discipline_id).first()
-        if not discipline_db:
-            return None
-
-        return self.to_entity(discipline_db)
-
     def get_many(self, query: DisciplineQuery) -> list[Discipline]:
         disciplines = DisciplineDB.select()
         return [

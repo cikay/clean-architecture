@@ -15,3 +15,11 @@ class BaseRepository[Tdb, Tentity]:
         db_instance = db_type(**fields_dict)
         await db_instance.save()
         return self.to_entity(db_instance)
+
+    async def get(self, id: int) -> Tentity | None:
+        db_type = types.get_original_bases(self.__class__)[0].__args__[0]
+        db_instance = await db_type.filter(id=id).first()
+        if not db_instance:
+            return None
+
+        return self.to_entity(db_instance)
