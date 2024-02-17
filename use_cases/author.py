@@ -7,13 +7,13 @@ class CreateAuthorUseCase(BaseUseCase):
     def __init__(self, repo: AuthorRepository):
         self.repo = repo
 
-    def execute(self, author: AuthorCreate):
-        return self.repo.create(author)
+    async def execute(self, author: AuthorCreate):
+        return await self.repo.create(author)
 
 
 class GetAuthorUseCase(BaseUseCase):
     def __init__(self, repo: AuthorRepository):
         self.repo = repo
 
-    def execute(self, author_id: int):
-        return self.repo.get(author_id)
+    async def execute(self, author_id: int):
+        return await self.repo.get(author_id)

@@ -11,16 +11,17 @@ router = APIRouter(prefix="/authors")
 
 
 @router.get("/{author_id}")
-def get(author_id: int, response: Response):
+async def get(author_id: int, response: Response):
     author_controller = GetAuthorControllerFactory.create()
-    body, status = author_controller.get(author_id)
+    import ipdb; ipdb.set_trace()
+    body, status = await author_controller.get(author_id)
     response.status_code = status
     return body
 
 
 @router.post("/")
-def create(author: AuthorCreateAPI, response: Response):
+async def create(author: AuthorCreateAPI, response: Response):
     author_controller = CreateAuthorControllerFactory.create()
-    body, status = author_controller.create(author.dict())
+    body, status = await author_controller.create(author.dict())
     response.status_code = status
     return body

@@ -1,11 +1,11 @@
-from peewee import CharField
+from tortoise.fields import CharField
 
 from models.base import BaseModel
 
 
 class AuthorBaseDB(BaseModel):
-    firstname = CharField()
-    lastname = CharField()
+    firstname = CharField(max_length=255)
+    lastname = CharField(max_length=255)
 
     class Meta:
         abstract = True
