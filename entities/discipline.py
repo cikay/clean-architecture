@@ -1,12 +1,9 @@
 from datetime import datetime
-from dataclasses import dataclass, field
-
-
-from base_entity import BaseCreateEntity
+from dataclasses import dataclass
 
 
 @dataclass
-class DisciplineCreate(BaseCreateEntity):
+class DisciplineCreate:
     name: str
 
 
@@ -14,9 +11,8 @@ class DisciplineCreate(BaseCreateEntity):
 class Discipline:
     id: str
     name: str
-    created_at: datetime = field(default_factory=datetime.now)
-    updated_at: datetime = field(default_factory=datetime.now)
-
+    created_at: datetime
+    updated_at: datetime
     # domain business logic goes here
 
 

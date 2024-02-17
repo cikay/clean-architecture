@@ -15,7 +15,8 @@ class DisciplineRepository(BaseRepository[DisciplineDB, Discipline]):
 
     async def create(self, discipline: Discipline) -> Discipline:
         discipline_dict = asdict(discipline)
-        discipline_db = await DisciplineDB.create(**discipline_dict)
+        discipline_db = DisciplineDB(**discipline_dict)
+        await discipline_db.save()
         return self.to_entity(discipline_db)
 
     def get_many(self, query: DisciplineQuery) -> list[Discipline]:
