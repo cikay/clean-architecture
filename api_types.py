@@ -3,7 +3,8 @@ from typing import get_type_hints
 from pydantic import create_model
 from entities.author import AuthorCreate
 
-from entities.discipline import DisciplineCreate
+from entities.discipline import DisciplineCreate, DisciplineQuery
+from entities.translator import TranslatorCreate
 
 
 def create_api_type(entity_type, type_name):
@@ -18,3 +19,5 @@ def create_api_type(entity_type, type_name):
 
 DisciplineCreateAPI = create_api_type(DisciplineCreate, "DisciplineCreateAPI")
 AuthorCreateAPI = create_api_type(AuthorCreate, "AuthorCreateAPI")
+TranslatorCreateAPI = create_api_type(TranslatorCreate, "TranslatorCreateAPI")
+DisciplineQueryAPI = create_api_type(DisciplineQuery, "DisciplineQueryAPI")

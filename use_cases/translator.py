@@ -7,13 +7,13 @@ class CreateTranslatorUseCase(BaseUseCase):
     def __init__(self, repo: TranslatorRepository):
         self.repo = repo
 
-    def execute(self, translator: TranslatorCreate):
-        return self.repo.create(translator)
+    async def execute(self, translator: TranslatorCreate):
+        return await self.repo.create(translator)
 
 
 class GetTranslatorUseCase(BaseUseCase):
     def __init__(self, repo: TranslatorRepository):
         self.repo = repo
 
-    def execute(self, translator_id: int):
-        return self.repo.get(translator_id)
+    async def execute(self, translator_id: int):
+        return await self.repo.get(translator_id)
