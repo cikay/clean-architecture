@@ -17,7 +17,7 @@ async def setup_db():
                 },
             },
             "apps": {
-                "my_app": {
+                "models": {
                     "models": ["models.__init__"],
                     "default_connection": "default",
                 }
