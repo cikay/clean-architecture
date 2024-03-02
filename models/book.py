@@ -9,7 +9,7 @@ class BookDB(BaseModel):
     original_language = fields.CharField(max_length=255)
     authors = fields.ManyToManyField("models.AuthorDB", related_name="books")
     translators = fields.ManyToManyField("models.TranslatorDB", related_name="books")
-
+    discipline = fields.ForeignKeyField("models.DisciplineDB", related_name="books")
 
     class Meta:
         table_name = "books"

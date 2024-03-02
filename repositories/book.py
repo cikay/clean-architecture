@@ -27,7 +27,9 @@ class BookRepository(BaseRepository[BookDB, Book]):
     async def get(self, id: int) -> Book | None:
         db_type = self._get_db_type()
         db_instance = (
-            await db_type.filter(id=id).prefetch_related("translators", "authors").first()
+            await db_type.filter(id=id)
+            .prefetch_related("translators", "authors", "discipline")
+            .first()
         )
         if not db_instance:
             return None

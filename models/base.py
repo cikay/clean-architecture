@@ -28,3 +28,10 @@ class BaseModel(Model):
             for k, v in self._meta.fields_map.items()
             if isinstance(v, fields.relational.ManyToManyFieldInstance)
         }
+
+    def get_foreign_key_fields(self):
+        return {
+            k
+            for k, v in self._meta.fields_map.items()
+            if isinstance(v, fields.relational.ForeignKeyFieldInstance)
+        }
