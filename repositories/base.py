@@ -28,7 +28,6 @@ class BaseRepository[Tdb, Tentity]:
                 m2m_instances = getattr(db_instance, field_name)
                 fields[field_name] = self.convert_m2m_field(m2m_instances)
             elif field_name in foreign_key_fields:
-                import ipdb; ipdb.set_trace()
                 foreign_key_db_isntance = getattr(db_instance, field_name)
                 fields[field_name] = self._convert_foreign_key_field(
                     foreign_key_db_isntance
@@ -63,7 +62,6 @@ class BaseRepository[Tdb, Tentity]:
         return entities
 
     def _convert_foreign_key_field(self, instance):
-        import ipdb; ipdb.set_trace()
         from repositories.discipline import DisciplineRepository
 
         model_name_to_repo_mapping = {
