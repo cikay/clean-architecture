@@ -5,6 +5,7 @@ from entities.author import AuthorCreate
 from entities.book import BookCreate
 
 from entities.discipline import DisciplineCreate, DisciplineQuery
+from entities.interlanguage_discipline import InterLanguageDisciplineCreate
 from entities.translator import TranslatorCreate
 
 
@@ -19,6 +20,9 @@ def create_api_type(entity_type, type_name):
 
 
 DisciplineCreateAPI = create_api_type(DisciplineCreate, "DisciplineCreateAPI")
+InterLanguageDisciplineCreateAPI = create_api_type(
+    InterLanguageDisciplineCreate, "InterLanguageDisciplineCreateAPI"
+)
 AuthorCreateAPI = create_api_type(AuthorCreate, "AuthorCreateAPI")
 TranslatorCreateAPI = create_api_type(TranslatorCreate, "TranslatorCreateAPI")
 DisciplineQueryAPI = create_api_type(DisciplineQuery, "DisciplineQueryAPI")
