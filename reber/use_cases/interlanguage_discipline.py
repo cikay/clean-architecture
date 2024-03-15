@@ -1,4 +1,4 @@
-from base_use_case import BaseUseCase
+from reber.base_use_case import BaseUseCase
 from repositories.interlanguage_discipline import InterLanguageDisciplineRepository
 from entities.interlanguage_discipline import InterLanguageDisciplineCreate
 

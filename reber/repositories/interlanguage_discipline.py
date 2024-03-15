@@ -1,5 +1,8 @@
 from dataclasses import asdict
-from entities.interlanguage_discipline import InterLanguageDiscipline
+from entities.interlanguage_discipline import (
+    InterLanguageDisciplineCreate,
+    InterLanguageDiscipline,
+)
 from models.interlanguage_discipline import InterLanguageDisciplineDB
 from repositories.base import BaseRepository
 
@@ -12,7 +15,7 @@ class InterLanguageDisciplineRepository(
         return [self.to_entity(discipline) for discipline in disciplines]
 
     async def create(
-        self, interlanguage_discipline: InterLanguageDiscipline
+        self, interlanguage_discipline: InterLanguageDisciplineCreate
     ) -> InterLanguageDiscipline:
         fields = asdict(interlanguage_discipline)
         discipline_db = await InterLanguageDisciplineDB.create(**fields)

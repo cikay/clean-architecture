@@ -2,7 +2,7 @@ from datetime import datetime
 from dataclasses import dataclass, field
 
 
-from base_entity import BaseCreateEntity
+from reber.base_entity import BaseCreateEntity
 from entities.author import Author
 from entities.discipline import Discipline
 from entities.translator import Translator

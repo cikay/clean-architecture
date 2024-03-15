@@ -9,17 +9,21 @@ from repositories.base import BaseRepository
 class BookRepository(BaseRepository[BookDB, Book]):
     async def create(self, book: Book) -> Book:
         fields = asdict(book)
+        import ipdb
 
+        ipdb.set_trace()
         authors = fields.pop("authors")
         translators = fields.pop("translators")
+        discipline = fields.pop("discipline")
         author_instances = await AuthorDB.filter(id__in=authors)
         translators_instance = await TranslatorDB.filter(id__in=translators)
+        fields["discipline"] = await DisciplineDB.get(id=discipline)
 
         book_db = await BookDB.create(**fields)
         await book_db.authors.add(*author_instances)
         await book_db.translators.add(*translators_instance)
-        book_db = await BookDB.filter(id=book_db.id).fetch_related(
-            "authors", "translators"
+        book_db = await BookDB.filter(id=book_db.id).prefetch_related(
+            "authors", "translators", "discipline"
         )
 
         return self.to_entity(book_db)

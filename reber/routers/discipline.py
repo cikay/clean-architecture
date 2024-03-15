@@ -5,7 +5,7 @@ from factories.discipline import (
     GetDisciplineControllerFactory,
     GetManyDisciplineControllerFactory,
 )
-from api_types import DisciplineCreateAPI
+from reber.api_types import DisciplineCreateAPI
 
 router = APIRouter(prefix="/disciplines")
 

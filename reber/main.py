@@ -2,7 +2,7 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 
-from setup_db import setup_db
+from reber.setup_db import setup_db
 
 from routers import discipline
 from routers import author

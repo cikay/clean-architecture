@@ -1,4 +1,4 @@
-from base_use_case import BaseUseCase
+from reber.base_use_case import BaseUseCase
 from repositories.author import AuthorRepository
 from entities.author import AuthorCreate
 

@@ -5,7 +5,7 @@ from factories.interlanguage_discipline import (
     GetInterLanguageDisciplineControllerFactory,
     GetManyInterLanguageDisciplineControllerFactory,
 )
-from api_types import InterLanguageDisciplineCreateAPI
+from reber.api_types import InterLanguageDisciplineCreateAPI
 
 router = APIRouter(prefix="/interlanguage_disciplines")
 
