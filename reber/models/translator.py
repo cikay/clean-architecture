@@ -1,4 +1,4 @@
-from models.author import AuthorBaseDB
+from reber.models.author import AuthorBaseDB
 
 
 class TranslatorDB(AuthorBaseDB):

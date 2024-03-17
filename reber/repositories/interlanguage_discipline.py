@@ -1,10 +1,11 @@
 from dataclasses import asdict
-from entities.interlanguage_discipline import (
+
+from reber.entities.interlanguage_discipline import (
     InterLanguageDisciplineCreate,
     InterLanguageDiscipline,
 )
-from models.interlanguage_discipline import InterLanguageDisciplineDB
-from repositories.base import BaseRepository
+from reber.models.interlanguage_discipline import InterLanguageDisciplineDB
+from reber.repositories.base import BaseRepository
 
 
 class InterLanguageDisciplineRepository(

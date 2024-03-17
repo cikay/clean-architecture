@@ -1,6 +1,6 @@
 from dataclasses import asdict
 from entities.translator import Translator
-from models.translator import TranslatorDB
+from reber.models.translator import TranslatorDB
 from repositories.base import BaseRepository
 
 

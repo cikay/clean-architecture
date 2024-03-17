@@ -1,6 +1,6 @@
 from tortoise.fields import CharField
 
-from models.base import BaseModel
+from reber.models.base import BaseModel
 
 
 class AuthorBaseDB(BaseModel):

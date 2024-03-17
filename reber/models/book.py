@@ -1,6 +1,6 @@
 from tortoise import fields
 
-from models.base import BaseModel
+from reber.models.base import BaseModel
 
 
 class BookDB(BaseModel):

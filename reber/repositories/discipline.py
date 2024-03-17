@@ -1,7 +1,7 @@
 from dataclasses import asdict
 
 from entities.discipline import Discipline, DisciplineQuery
-from models.discipline import DisciplineDB
+from reber.models.discipline import DisciplineDB
 from repositories.base import BaseRepository
 
 
