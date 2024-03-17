@@ -13,7 +13,7 @@ from reber.entities.interlanguage_discipline import (
 
 
 @pytest.mark.asyncio
-async def test_interlanguage_discipline(mocker):
+async def test_create_interlanguage_discipline(mocker):
     create_func = mocker.patch.object(InterLanguageDisciplineRepository, "create")
     expected_interlanguage_discipline = InterLanguageDiscipline(
         id=1,
