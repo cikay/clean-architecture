@@ -1,12 +1,12 @@
 from typing import get_type_hints
 
 from pydantic import create_model
-from entities.author import AuthorCreate
-from entities.book import BookCreate
+from reber.entities.author import AuthorCreate
+from reber.entities.book import BookCreate
 
-from entities.discipline import DisciplineCreate, DisciplineQuery
-from entities.interlanguage_discipline import InterLanguageDisciplineCreate
-from entities.translator import TranslatorCreate
+from reber.entities.discipline import DisciplineCreate, DisciplineQuery
+from reber.entities.interlanguage_discipline import InterLanguageDisciplineCreate
+from reber.entities.translator import TranslatorCreate
 
 
 def create_api_type(entity_type, type_name):

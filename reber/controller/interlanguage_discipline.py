@@ -2,7 +2,8 @@ from use_cases.interlanguage_discipline import (
     CreateInterLanguageDisciplineUseCase,
     GetManyInterLanguageDisciplineUseCase,
 )
-from entities.interlanguage_discipline import InterLanguageDisciplineCreate
+from reber.entities.interlanguage_discipline import InterLanguageDisciplineCreate
+
 
 class GetInterLanguageDisciplineController:
     def __init__(self, use_case: InterLanguageDisciplineCreate):

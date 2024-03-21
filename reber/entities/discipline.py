@@ -1,6 +1,8 @@
 from datetime import datetime
 from dataclasses import dataclass
 
+from reber.entities.interlanguage_discipline import InterLanguageDiscipline
+
 
 @dataclass
 class DisciplineCreate:
@@ -13,7 +15,8 @@ class Discipline:
     name: str
     created_at: datetime
     updated_at: datetime
-    # domain business logic goes here
+    interlanguage_discipline_id: int
+    interlanguage_discipline: InterLanguageDiscipline | None
 
 
 @dataclass
