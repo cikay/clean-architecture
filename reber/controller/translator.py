@@ -1,5 +1,5 @@
 from use_cases.translator import CreateTranslatorUseCase, GetTranslatorUseCase
-from entities.translator import TranslatorCreate
+from reber.entities.translator import TranslatorCreate
 
 
 class GetTranslatorController:

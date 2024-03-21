@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from entities.author import Author, AuthorCreate
+from reber.entities.author import Author, AuthorCreate
 
 
 @dataclass

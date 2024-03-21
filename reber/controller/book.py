@@ -1,5 +1,5 @@
 from use_cases.book import CreateBookUseCase, GetBookUseCase
-from entities.book import BookCreate
+from reber.entities.book import BookCreate
 
 
 class GetBookController:

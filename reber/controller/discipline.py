@@ -3,7 +3,7 @@ from use_cases.discipline import (
     GetDisciplineUseCase,
     GetManyDisciplineUseCase,
 )
-from entities.discipline import DisciplineCreate
+from reber.entities.discipline import DisciplineCreate
 
 
 class GetDisciplineController:

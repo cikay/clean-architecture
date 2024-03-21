@@ -1,5 +1,5 @@
 from use_cases.author import CreateAuthorUseCase, GetAuthorUseCase
-from entities.author import AuthorCreate
+from reber.entities.author import AuthorCreate
 
 
 class GetAuthorController:

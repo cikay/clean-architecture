@@ -1,6 +1,6 @@
 from reber.base_use_case import BaseUseCase
-from repositories.author import AuthorRepository
-from entities.author import AuthorCreate
+from reber.repositories.author import AuthorRepository
+from reber.entities.author import AuthorCreate
 
 
 class CreateAuthorUseCase(BaseUseCase):
@@ -17,3 +17,11 @@ class GetAuthorUseCase(BaseUseCase):
 
     async def execute(self, author_id: int):
         return await self.repo.get(author_id)
+
+
+class GetManyAuthorUseCase(BaseUseCase):
+    def __init__(self, repo: AuthorRepository):
+        self.repo = repo
+
+    async def execute(self):
+        return await self.repo.get_many()

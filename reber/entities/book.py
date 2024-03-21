@@ -3,9 +3,9 @@ from dataclasses import dataclass, field
 
 
 from reber.base_entity import BaseCreateEntity
-from entities.author import Author
-from entities.discipline import Discipline
-from entities.translator import Translator
+from reber.entities.author import Author
+from reber.entities.discipline import Discipline
+from reber.entities.translator import Translator
 
 
 @dataclass
