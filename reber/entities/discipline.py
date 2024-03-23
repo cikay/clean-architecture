@@ -1,5 +1,6 @@
+from __future__ import annotations
 from datetime import datetime
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 from reber.entities.interlanguage_discipline import InterLanguageDiscipline
 

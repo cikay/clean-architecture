@@ -24,7 +24,7 @@ class Book:
     language: str
     original_language: str
     authors: list[Author]
-    translators: list[Translator]
+    translators: list[Author]
     discipline: Discipline
     created_at: datetime = field(default_factory=datetime.now)
     updated_at: datetime = field(default_factory=datetime.now)

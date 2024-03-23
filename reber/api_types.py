@@ -23,6 +23,5 @@ InterLanguageDisciplineCreateAPI = create_api_type(
     InterLanguageDisciplineCreate, "InterLanguageDisciplineCreateAPI"
 )
 AuthorCreateAPI = create_api_type(AuthorCreate, "AuthorCreateAPI")
-TranslatorCreateAPI = create_api_type(TranslatorCreate, "TranslatorCreateAPI")
 DisciplineQueryAPI = create_api_type(DisciplineQuery, "DisciplineQueryAPI")
 BookCreateAPI = create_api_type(BookCreate, "BookCreateAPI")

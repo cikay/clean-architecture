@@ -16,7 +16,7 @@ class BookRepository(BaseRepository[BookDB, Book]):
         translators = fields.pop("translators")
         discipline = fields.pop("discipline")
         author_instances = await AuthorDB.filter(id__in=authors)
-        translators_instance = await TranslatorDB.filter(id__in=translators)
+        translators_instance = await AuthorDB.filter(id__in=translators)
         fields["discipline"] = await DisciplineDB.get(id=discipline)
 
         book_db = await BookDB.create(**fields)
