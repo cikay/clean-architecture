@@ -13,7 +13,6 @@ router = APIRouter(prefix="/authors")
 @router.get("/{author_id}")
 async def get(author_id: int, response: Response):
     author_controller = GetAuthorControllerFactory.create()
-    import ipdb; ipdb.set_trace()
     body, status = await author_controller.get(author_id)
     response.status_code = status
     return body

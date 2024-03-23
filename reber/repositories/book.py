@@ -9,9 +9,6 @@ from reber.repositories.base import BaseRepository
 class BookRepository(BaseRepository[BookDB, Book]):
     async def create(self, book: Book) -> Book:
         fields = asdict(book)
-        import ipdb
-
-        ipdb.set_trace()
         authors = fields.pop("authors")
         translators = fields.pop("translators")
         discipline = fields.pop("discipline")

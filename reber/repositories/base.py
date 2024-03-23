@@ -32,10 +32,16 @@ class BaseRepository[Tdb, Tentity]:
         objects = await db_type.filter(id__in=ids)
         return [self.to_entity(o) for o in objects]
 
-    def to_entity(self, db_instance: Tdb) -> Tentity:
-        fields_name = self._get_entity_fields()
+    def to_entity(
+        self, db_instance: Tdb, relational_fields_to_convert: set[str] | None = None
+    ) -> Tentity:
+
+        if not relational_fields_to_convert:
+            relational_fields_to_convert = set()
+
+        fields_name = self._get_db_type_fields()
         entity_type = self._get_entity_type()
-        m2m_fields = db_instance.get_m2m_fields()
+        m2m_fields = db_instance.get_list_fields()
         foreign_key_fields = db_instance.get_foreign_key_fields()
         fields = {}
         for field_name in fields_name:
@@ -43,13 +49,12 @@ class BaseRepository[Tdb, Tentity]:
                 m2m_instances = getattr(db_instance, field_name)
                 fields[field_name] = self.convert_m2m_field(m2m_instances)
             elif field_name in foreign_key_fields:
-                foreign_key_db_instance = getattr(db_instance, field_name)
-                if foreign_key_db_instance:
-                    fields[field_name] = self._convert_foreign_key_field(
-                        foreign_key_db_instance
-                    )
-                else:
-                    fields[field_name] = None
+                if field_name in relational_fields_to_convert:
+                    foreign_key_db_instance = getattr(db_instance, field_name)
+                    if foreign_key_db_instance:
+                        fields[field_name] = self._convert_foreign_key_field(
+                            foreign_key_db_instance
+                        )
             else:
                 fields[field_name] = getattr(db_instance, field_name)
 
@@ -62,8 +67,7 @@ class BaseRepository[Tdb, Tentity]:
         klass = instances[0].__class__
         klass_name = klass.__name__
         m2m_field_model_repo = get_repository(klass_name)
-        m2m_field_model_fields_name = m2m_field_model_repo()._get_entity_fields()
-
+        m2m_field_model_fields_name = m2m_field_model_repo._get_db_type_fields()
         entities = []
         for instance in instances:
             entities.append(
@@ -73,19 +77,22 @@ class BaseRepository[Tdb, Tentity]:
         return entities
 
     def _convert_foreign_key_field(self, instance):
+        import ipdb
+
+        ipdb.set_trace()
+
         klass = instance.__class__
         klass_name = klass.__name__
         repo = get_repository(klass_name)
-        foreign_key_field_instance_fields = repo()._get_entity_fields()
+        foreign_key_field_instance_fields = repo._get_db_type_fields()
         return klass(
             **{f: getattr(instance, f) for f in foreign_key_field_instance_fields}
         )
 
-    def _get_entity_fields(self) -> set[str]:
-        entity_type = self._get_entity_type()
-        hints = get_type_hints(entity_type)
-        fields = hints.keys()
-        return set(fields)
+    @classmethod
+    def _get_db_type_fields(cls) -> set[str]:
+        db_type = cls._get_db_type()
+        return db_type.get_fields_name()
 
     @classmethod
     def _get_db_type(cls) -> Tdb:
