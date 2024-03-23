@@ -2,6 +2,22 @@ import types
 from typing import get_type_hints
 
 
+def get_repository(model_name: str):
+    from reber.repositories.discipline import DisciplineRepository
+    from reber.repositories.interlanguage_discipline import (
+        InterLanguageDisciplineRepository,
+    )
+    from reber.repositories.author import AuthorRepository
+
+    model_name_to_repo_mapping = {
+        "AuthorDB": AuthorRepository,
+        "DisciplineDB": DisciplineRepository,
+        "InterLanguageDisciplineDB": InterLanguageDisciplineRepository,
+    }
+
+    return model_name_to_repo_mapping[model_name]
+
+
 class BaseRepository[Tdb, Tentity]:
     async def get(self, id: int) -> Tentity | None:
         db_type = self._get_db_type()
@@ -21,17 +37,19 @@ class BaseRepository[Tdb, Tentity]:
         entity_type = self._get_entity_type()
         m2m_fields = db_instance.get_m2m_fields()
         foreign_key_fields = db_instance.get_foreign_key_fields()
-
         fields = {}
         for field_name in fields_name:
             if field_name in m2m_fields:
                 m2m_instances = getattr(db_instance, field_name)
                 fields[field_name] = self.convert_m2m_field(m2m_instances)
             elif field_name in foreign_key_fields:
-                foreign_key_db_isntance = getattr(db_instance, field_name)
-                fields[field_name] = self._convert_foreign_key_field(
-                    foreign_key_db_isntance
-                )
+                foreign_key_db_instance = getattr(db_instance, field_name)
+                if foreign_key_db_instance:
+                    fields[field_name] = self._convert_foreign_key_field(
+                        foreign_key_db_instance
+                    )
+                else:
+                    fields[field_name] = None
             else:
                 fields[field_name] = getattr(db_instance, field_name)
 
@@ -41,16 +59,9 @@ class BaseRepository[Tdb, Tentity]:
         if not instances:
             return []
 
-        from reber.repositories.translator import TranslatorRepository
-        from reber.repositories.author import AuthorRepository
-
-        model_name_to_repo_mapping = {
-            "AuthorDB": AuthorRepository,
-            "TranslatorDB": TranslatorRepository,
-        }
         klass = instances[0].__class__
         klass_name = klass.__name__
-        m2m_field_model_repo = model_name_to_repo_mapping[klass_name]
+        m2m_field_model_repo = get_repository(klass_name)
         m2m_field_model_fields_name = m2m_field_model_repo()._get_entity_fields()
 
         entities = []
@@ -62,14 +73,9 @@ class BaseRepository[Tdb, Tentity]:
         return entities
 
     def _convert_foreign_key_field(self, instance):
-        from reber.repositories.discipline import DisciplineRepository
-
-        model_name_to_repo_mapping = {
-            "DisciplineDB": DisciplineRepository,
-        }
         klass = instance.__class__
         klass_name = klass.__name__
-        repo = model_name_to_repo_mapping[klass_name]
+        repo = get_repository(klass_name)
         foreign_key_field_instance_fields = repo()._get_entity_fields()
         return klass(
             **{f: getattr(instance, f) for f in foreign_key_field_instance_fields}
