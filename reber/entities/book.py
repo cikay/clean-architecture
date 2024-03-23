@@ -5,7 +5,6 @@ from dataclasses import dataclass, field
 from reber.base_entity import BaseCreateEntity
 from reber.entities.author import Author
 from reber.entities.discipline import Discipline
-from reber.entities.translator import Translator
 
 
 @dataclass
@@ -25,7 +24,7 @@ class Book:
     language: str
     original_language: str
     authors: list[Author]
-    translators: list[Translator]
+    translators: list[Author]
     discipline: Discipline
     created_at: datetime = field(default_factory=datetime.now)
     updated_at: datetime = field(default_factory=datetime.now)

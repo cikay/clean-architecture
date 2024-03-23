@@ -1,6 +1,6 @@
-from controller.author import CreateAuthorController, GetAuthorController
-from repositories.author import AuthorRepository
-from use_cases.author import CreateAuthorUseCase, GetAuthorUseCase
+from reber.controller.author import CreateAuthorController, GetAuthorController
+from reber.repositories.author import AuthorRepository
+from reber.use_cases.author import CreateAuthorUseCase, GetAuthorUseCase
 
 
 class GetAuthorControllerFactory:

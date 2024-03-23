@@ -1,6 +1,6 @@
-from controller.book import CreateBookController, GetBookController
-from repositories.book import BookRepository
-from use_cases.book import CreateBookUseCase, GetBookUseCase
+from reber.controller.book import CreateBookController, GetBookController
+from reber.repositories.book import BookRepository
+from reber.use_cases.book import CreateBookUseCase, GetBookUseCase
 
 
 class GetBookControllerFactory:

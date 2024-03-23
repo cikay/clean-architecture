@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Response
 from reber.api_types import BookCreateAPI
 
-from factories.book import (
+from reber.factories.book import (
     CreateBookControllerFactory,
     GetBookControllerFactory,
 )

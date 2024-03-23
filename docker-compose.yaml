@@ -2,7 +2,7 @@
 services:
   reber:
     build: .
-    command: uvicorn main:app --reload --host 0.0.0.0 --port 8000
+    command: uvicorn reber.main:app --reload --host 0.0.0.0 --port 8000
     ports:
       - "8080:8000"
     depends_on:

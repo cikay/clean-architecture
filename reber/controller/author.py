@@ -1,4 +1,4 @@
-from use_cases.author import CreateAuthorUseCase, GetAuthorUseCase
+from reber.use_cases.author import CreateAuthorUseCase, GetAuthorUseCase
 from reber.entities.author import AuthorCreate
 
 

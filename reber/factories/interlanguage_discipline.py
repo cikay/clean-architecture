@@ -1,10 +1,12 @@
-from controller.interlanguage_discipline import (
+from reber.controller.interlanguage_discipline import (
     CreateInterLanguageDisciplineController,
     GetInterLanguageDisciplineController,
     GetManyInterLanguageDisciplineController,
 )
-from repositories.interlanguage_discipline import InterLanguageDisciplineRepository
-from use_cases.interlanguage_discipline import (
+from reber.repositories.interlanguage_discipline import (
+    InterLanguageDisciplineRepository,
+)
+from reber.use_cases.interlanguage_discipline import (
     CreateInterLanguageDisciplineUseCase,
     GetInterLanguageDisciplineUseCase,
     GetManyInterLanguageDisciplineUseCase,

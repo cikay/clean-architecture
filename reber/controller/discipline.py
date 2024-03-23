@@ -1,4 +1,4 @@
-from use_cases.discipline import (
+from reber.use_cases.discipline import (
     CreateDisciplineUseCase,
     GetDisciplineUseCase,
     GetManyDisciplineUseCase,
