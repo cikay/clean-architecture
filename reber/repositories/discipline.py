@@ -33,4 +33,7 @@ class DisciplineRepository(BaseRepository[DisciplineDB, Discipline]):
     async def create(self, discipline: DisciplineCreate) -> Discipline:
         fields = asdict(discipline)
         discipline_db = await DisciplineDB.create(**fields)
+        discipline_db = await DisciplineDB.get(id=discipline_db.id).prefetch_related(
+            "sub_disciplines", "parent_discipline", "interlanguage_discipline"
+        )
         return self.to_entity(discipline_db)
