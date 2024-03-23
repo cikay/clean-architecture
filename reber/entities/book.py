@@ -5,7 +5,6 @@ from dataclasses import dataclass, field
 from reber.base_entity import BaseCreateEntity
 from reber.entities.author import Author
 from reber.entities.discipline import Discipline
-from reber.entities.translator import Translator
 
 
 @dataclass

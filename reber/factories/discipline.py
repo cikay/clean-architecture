@@ -1,6 +1,14 @@
-from controller.discipline import CreateDisciplineController, GetDisciplineController, GetManyDisciplineController
-from repositories.discipline import DisciplineRepository
-from use_cases.discipline import CreateDisciplineUseCase, GetDisciplineUseCase, GetManyDisciplineUseCase
+from reber.controller.discipline import (
+    CreateDisciplineController,
+    GetDisciplineController,
+    GetManyDisciplineController,
+)
+from reber.repositories.discipline import DisciplineRepository
+from reber.use_cases.discipline import (
+    CreateDisciplineUseCase,
+    GetDisciplineUseCase,
+    GetManyDisciplineUseCase,
+)
 
 
 class GetDisciplineControllerFactory:

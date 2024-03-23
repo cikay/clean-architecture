@@ -1,5 +1,5 @@
 from reber.base_use_case import BaseUseCase
-from repositories.book import BookRepository
+from reber.repositories.book import BookRepository
 from reber.entities.book import BookCreate
 
 

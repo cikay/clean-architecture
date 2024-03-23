@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Response
 
-from factories.interlanguage_discipline import (
+from reber.factories.interlanguage_discipline import (
     CreateInterLanguageDisciplineControllerFactory,
     GetInterLanguageDisciplineControllerFactory,
     GetManyInterLanguageDisciplineControllerFactory,

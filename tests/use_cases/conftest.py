@@ -3,7 +3,6 @@ import pytest
 from reber.entities.author import Author
 from reber.entities.discipline import Discipline
 from reber.entities.interlanguage_discipline import InterLanguageDiscipline
-from reber.entities.translator import Translator
 
 
 @pytest.fixture

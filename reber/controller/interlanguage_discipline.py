@@ -1,4 +1,4 @@
-from use_cases.interlanguage_discipline import (
+from reber.use_cases.interlanguage_discipline import (
     CreateInterLanguageDisciplineUseCase,
     GetManyInterLanguageDisciplineUseCase,
 )

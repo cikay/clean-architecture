@@ -1,6 +1,9 @@
-from controller.translator import CreateTranslatorController, GetTranslatorController
-from repositories.translator import TranslatorRepository
-from use_cases.translator import CreateTranslatorUseCase, GetTranslatorUseCase
+from reber.controller.translator import (
+    CreateTranslatorController,
+    GetTranslatorController,
+)
+from reber.repositories.translator import TranslatorRepository
+from reber.use_cases.translator import CreateTranslatorUseCase, GetTranslatorUseCase
 
 
 class GetTranslatorControllerFactory:

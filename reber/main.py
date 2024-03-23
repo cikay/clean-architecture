@@ -4,11 +4,10 @@ from fastapi import FastAPI
 
 from reber.setup_db import setup_db
 
-from routers import discipline
-from routers import author
-from routers import translator
-from routers import book
-from routers import interlanguage_discipline
+from reber.routers import discipline
+from reber.routers import author
+from reber.routers import book
+from reber.routers import interlanguage_discipline
 
 
 @asynccontextmanager

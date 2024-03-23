@@ -41,8 +41,8 @@ class BaseRepository[Tdb, Tentity]:
         if not instances:
             return []
 
-        from repositories.translator import TranslatorRepository
-        from repositories.author import AuthorRepository
+        from reber.repositories.translator import TranslatorRepository
+        from reber.repositories.author import AuthorRepository
 
         model_name_to_repo_mapping = {
             "AuthorDB": AuthorRepository,
@@ -62,7 +62,7 @@ class BaseRepository[Tdb, Tentity]:
         return entities
 
     def _convert_foreign_key_field(self, instance):
-        from repositories.discipline import DisciplineRepository
+        from reber.repositories.discipline import DisciplineRepository
 
         model_name_to_repo_mapping = {
             "DisciplineDB": DisciplineRepository,

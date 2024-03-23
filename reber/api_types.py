@@ -6,7 +6,6 @@ from reber.entities.book import BookCreate
 
 from reber.entities.discipline import DisciplineCreate, DisciplineQuery
 from reber.entities.interlanguage_discipline import InterLanguageDisciplineCreate
-from reber.entities.translator import TranslatorCreate
 
 
 def create_api_type(entity_type, type_name):

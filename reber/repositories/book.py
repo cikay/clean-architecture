@@ -3,7 +3,6 @@ from dataclasses import asdict
 from reber.entities.book import Book
 from reber.models.author import AuthorDB
 from reber.models.book import BookDB
-from reber.models.translator import TranslatorDB
 from reber.repositories.base import BaseRepository
 
 

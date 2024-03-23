@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Response
 
-from factories.discipline import (
+from reber.factories.discipline import (
     CreateDisciplineControllerFactory,
     GetDisciplineControllerFactory,
     GetManyDisciplineControllerFactory,

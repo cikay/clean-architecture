@@ -1,4 +1,4 @@
-from use_cases.book import CreateBookUseCase, GetBookUseCase
+from reber.use_cases.book import CreateBookUseCase, GetBookUseCase
 from reber.entities.book import BookCreate
 
 

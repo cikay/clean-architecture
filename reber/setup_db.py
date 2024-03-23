@@ -18,7 +18,7 @@ async def setup_db():
             },
             "apps": {
                 "models": {
-                    "models": ["models.__init__"],
+                    "models": ["reber.models.__init__"],
                     "default_connection": "default",
                 }
             },

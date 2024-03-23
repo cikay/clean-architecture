@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Response
 from reber.api_types import AuthorCreateAPI
 
-from factories.author import (
+from reber.factories.author import (
     CreateAuthorControllerFactory,
     GetAuthorControllerFactory,
 )
