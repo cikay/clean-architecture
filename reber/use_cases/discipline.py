@@ -1,17 +1,17 @@
-from reber.base_use_case import BaseUseCase
+from reber.use_cases.base import BaseCreateUseCase, GetManyUseCase, GetUseCase
 from reber.repositories.discipline import DisciplineRepository
 from reber.entities.discipline import DisciplineCreate
 
 
-class CreateDisciplineUseCase(BaseUseCase):
+class CreateDisciplineUseCase(BaseCreateUseCase):
     def __init__(self, repo: DisciplineRepository):
         self.repo = repo
 
-    async def execute(self, discipline: DisciplineCreate):
-        return await self.repo.create(discipline)
+    async def execute(self, create_type: DisciplineCreate):
+        return await self.repo.create(create_type)
 
 
-class GetDisciplineUseCase(BaseUseCase):
+class GetDisciplineUseCase(GetUseCase):
     def __init__(self, repo: DisciplineRepository):
         self.repo = repo
 
@@ -19,7 +19,7 @@ class GetDisciplineUseCase(BaseUseCase):
         return await self.repo.get(discipline_id)
 
 
-class GetManyDisciplineUseCase(BaseUseCase):
+class GetManyDisciplineUseCase(GetManyUseCase):
     def __init__(self, repo: DisciplineRepository):
         self.repo = repo
 

@@ -1,17 +1,19 @@
-from reber.base_use_case import BaseUseCase
-from reber.repositories.interlanguage_discipline import InterLanguageDisciplineRepository
+from reber.use_cases.base import BaseCreateUseCase
+from reber.repositories.interlanguage_discipline import (
+    InterLanguageDisciplineRepository,
+)
 from reber.entities.interlanguage_discipline import InterLanguageDisciplineCreate
 
 
-class CreateInterLanguageDisciplineUseCase(BaseUseCase):
+class CreateInterLanguageDisciplineUseCase(BaseCreateUseCase):
     def __init__(self, repo: InterLanguageDisciplineRepository):
         self.repo = repo
 
-    async def execute(self, discipline: InterLanguageDisciplineCreate):
-        return await self.repo.create(discipline)
+    async def execute(self, create_type: InterLanguageDisciplineCreate):
+        return await self.repo.create(create_type)
 
 
-class GetInterLanguageDisciplineUseCase(BaseUseCase):
+class GetInterLanguageDisciplineUseCase:
     def __init__(self, repo: InterLanguageDisciplineRepository):
         self.repo = repo
 
@@ -19,7 +21,7 @@ class GetInterLanguageDisciplineUseCase(BaseUseCase):
         return await self.repo.get(discipline_id)
 
 
-class GetManyInterLanguageDisciplineUseCase(BaseUseCase):
+class GetManyInterLanguageDisciplineUseCase:
     def __init__(self, repo: InterLanguageDisciplineRepository):
         self.repo = repo
 
