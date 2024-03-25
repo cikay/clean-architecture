@@ -61,7 +61,7 @@ async def test_get_many_interlanguage_discipline_controller(
     )
 
     expected_interlanguage_disciplines = [asdict(interlanguage_discipline)]
-    mock_execute_func.return_value = expected_interlanguage_disciplines
+    mock_execute_func.return_value = [interlanguage_discipline]
 
     controller = GetManyInterLanguageDisciplineControllerFactory.create()
 
