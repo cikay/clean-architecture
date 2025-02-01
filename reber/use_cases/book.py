@@ -1,17 +1,17 @@
-from reber.base_use_case import BaseUseCase
+from reber.use_cases.base import BaseCreateUseCase, GetUseCase
 from reber.repositories.book import BookRepository
 from reber.entities.book import BookCreate
 
 
-class CreateBookUseCase(BaseUseCase):
+class CreateBookUseCase(BaseCreateUseCase):
     def __init__(self, repo: BookRepository):
         self.repo = repo
 
-    async def execute(self, book: BookCreate):
-        return await self.repo.create(book)
+    async def execute(self, create_type: BookCreate):
+        return await self.repo.create(create_type)
 
 
-class GetBookUseCase(BaseUseCase):
+class GetBookUseCase(GetUseCase):
     def __init__(self, repo: BookRepository):
         self.repo = repo
 

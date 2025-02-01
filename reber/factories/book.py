@@ -11,6 +11,14 @@ class GetBookControllerFactory:
         return GetBookController(use_case)
 
 
+class GetBookControllerFactory:
+    @staticmethod
+    def create() -> GetBookController:
+        repo = BookRepository()
+        use_case = GetBookUseCase(repo)
+        return GetBookController(use_case)
+
+
 class CreateBookControllerFactory:
     @staticmethod
     def create() -> CreateBookController:

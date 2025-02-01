@@ -10,9 +10,17 @@ from reber.factories.book import (
 router = APIRouter(prefix="/books")
 
 
-@router.get("/{book_id}")
+@router.get("/")
 async def get(book_id: int, response: Response):
     book_controller = GetBookControllerFactory.create()
+    body, status = await book_controller.get(book_id)
+    response.status_code = status
+    return body
+
+
+@router.get("/{id}")
+async def get_many(book_id: int, response: Response):
+    book_controller = GetManyBookControllerFactory.create()
     body, status = await book_controller.get(book_id)
     response.status_code = status
     return body

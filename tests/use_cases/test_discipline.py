@@ -20,7 +20,9 @@ async def test_create_discipline(mocker, discipline):
     repo = DisciplineRepository()
     use_case = CreateDisciplineUseCase(repo)
 
-    discipline_create = DisciplineCreate(name="Computer Science")
+    discipline_create = DisciplineCreate(
+        name="Computer Science", interlanguage_discipline_id=1
+    )
     result_discipline = await use_case.execute(discipline_create)
     assert result_discipline == discipline
 

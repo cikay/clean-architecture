@@ -31,6 +31,6 @@ async def create(
     interlanguage_discipline: InterLanguageDisciplineCreateAPI, response: Response
 ):
     discipline_controller = CreateInterLanguageDisciplineControllerFactory.create()
-    body, status = await discipline_controller.create(interlanguage_discipline.dict())
+    body, status = await discipline_controller.execute(interlanguage_discipline.dict())
     response.status_code = status
     return body
