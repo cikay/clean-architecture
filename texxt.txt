@@ -1,0 +1,12 @@
+
+interlanguage_discipline
+discipline
+    parent_discipline
+    language eksik
+translator - author ikisi aynı model
+book
+    puan
+
+
+testler eksik
+
